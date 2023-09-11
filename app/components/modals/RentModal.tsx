@@ -17,6 +17,7 @@ import ImageUpload from "../inputs/ImageUpload";
 
 import Heading from "../Heading";
 import Input from "../inputs/input";
+import Counter from "../inputs/Counter";
 
 enum STEPS {
   CATEGORY = 0,
@@ -50,8 +51,8 @@ const RentModal = () => {
       bathroomCount: 1,
       imageSrc: "",
       price: 1,
-      title: "",
       description: "",
+      title: "",
     },
   });
 
@@ -90,7 +91,11 @@ const RentModal = () => {
     if (step !== STEPS.PRICE) {
       return onNext();
     }
-
+    console.log(data);
+    if (data.title === "" || undefined || null) {
+      console.log(data.title);
+      return toast.error("Title Missing");
+    }
     setIsLoading(true);
 
     axios
