@@ -91,11 +91,7 @@ const RentModal = () => {
     if (step !== STEPS.PRICE) {
       return onNext();
     }
-    console.log(data);
-    if (data.title === "" || undefined || null) {
-      console.log(data.title);
-      return toast.error("Title Missing");
-    }
+
     setIsLoading(true);
 
     axios

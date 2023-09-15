@@ -60,22 +60,22 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                 <MenuItem
                   onClick={() => {}}
                   label="My trips"
-                  setIsOpen={setIsOpen}
+                  setIsOpen={(value) => setIsOpen(value)}
                 />
                 <MenuItem
                   onClick={() => {}}
                   label="My favourites"
-                  setIsOpen={setIsOpen}
+                  setIsOpen={(value) => setIsOpen(value)}
                 />
                 <MenuItem
                   onClick={() => {}}
                   label="My reaservations"
-                  setIsOpen={setIsOpen}
+                  setIsOpen={(value) => setIsOpen(value)}
                 />
                 <MenuItem
                   onClick={() => {}}
                   label="My properties"
-                  setIsOpen={setIsOpen}
+                  setIsOpen={(value) => setIsOpen(value)}
                 />
                 <MenuItem
                   onClick={rentModalHook.onOpen}

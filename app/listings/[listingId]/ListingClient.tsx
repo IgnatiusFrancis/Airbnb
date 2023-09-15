@@ -5,10 +5,13 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "react-hot-toast";
 import { Range } from "react-date-range";
 import { useRouter } from "next/navigation";
-import { differenceInDays, eachDayOfInterval } from "date-fns";
+import {
+  differenceInCalendarDays,
+  differenceInDays,
+  eachDayOfInterval,
+} from "date-fns";
 
 import useLoginModal from "@/app/hooks/useLoginModal";
-import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 
 import Container from "@/app/components/Container";
 import { categories } from "@/app/components/navbar/Categories";
@@ -47,6 +50,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
         start: new Date(reservation.startDate),
         end: new Date(reservation.endDate),
       });
+      // console.log(range);
 
       dates = [...dates, ...range];
     });
@@ -67,7 +71,6 @@ const ListingClient: React.FC<ListingClientProps> = ({
       return loginModal.onOpen();
     }
     setIsLoading(true);
-
     axios
       .post("/api/reservations", {
         totalPrice,
@@ -91,6 +94,10 @@ const ListingClient: React.FC<ListingClientProps> = ({
   useEffect(() => {
     if (dateRange.startDate && dateRange.endDate) {
       const dayCount = differenceInDays(dateRange.endDate, dateRange.startDate);
+      const dayCal = differenceInCalendarDays(
+        dateRange.endDate,
+        dateRange.startDate
+      );
 
       if (dayCount && listing.price) {
         setTotalPrice(dayCount * listing.price);
@@ -117,7 +124,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
             currentUser={currentUser}
           />
           <div
-            className="
+            className=" 
               grid 
               grid-cols-1 
               md:grid-cols-7 

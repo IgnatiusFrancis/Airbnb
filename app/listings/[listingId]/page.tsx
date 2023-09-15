@@ -6,7 +6,7 @@ import ClientOnly from "@/app/components/ClientOnly";
 import EmptyState from "@/app/components/EmptyState";
 
 import ListingClient from "./ListingClient";
-
+import prisma from "@/app/libs/prismadb";
 interface IParams {
   listingId?: string;
 }
@@ -14,6 +14,7 @@ interface IParams {
 const ListingPage = async ({ params }: { params: IParams }) => {
   const listing = await getListingById(params);
   const reservations = await getReservations(params);
+  // console.log(reservations);
   const currentUser = await getCurrentUser();
 
   if (!listing) {
