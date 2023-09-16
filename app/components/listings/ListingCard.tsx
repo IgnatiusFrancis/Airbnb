@@ -6,10 +6,10 @@ import { useCallback, useMemo } from "react";
 import { format } from "date-fns";
 
 import useCountries from "@/app/hooks/useCountries";
-import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
+// import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 
 import Button from "../Button";
-import ClientOnly from "../ClientOnly";
+
 import HeartButton from "@/app/HeartButton";
 import { Listing, Reservation, User } from "@prisma/client";
 
